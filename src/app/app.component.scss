@@ -1,0 +1,85 @@
+.container-card {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.weather-card {
+  width: 500px;
+  background: linear-gradient(180deg, hsl(210, 100%, 75%), hsl(40, 100%, 75%));
+  // box-shadow: 2px, 2px, 5px, hsl(0, 0, 0.5);
+}
+
+.weather-display-wrapper {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  border-radius: 18px;
+}
+
+.card-weather-image {
+  width: 220px;
+}
+
+.form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-field {
+  width: 50%;
+  height: 65px;
+}
+
+.submit-btn {
+  margin-left: 6px;
+  margin-bottom: 20px;
+  color: #fff !important;
+  background-color: #6610f2 !important;
+}
+
+.submit-btn:hover {
+  background-color: hsla(263, 90%, 51%, 0.502) !important;
+}
+
+.temperature-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.temperature-unit {
+  font-size: 3.5rem;
+}
+
+.card-header {
+  padding-bottom: 13px;
+}
+
+.data-table {
+  background: none;
+  border-top: 1px solid black;
+}
+
+.weather-condition-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.weather-details {
+  padding-right: 8px;
+}
+
+.text-content {
+  padding-right: 4px;
+  font-weight: 600;
+}
+
+mat-card-content {
+  display: flex;
+  justify-content: center;
+}
