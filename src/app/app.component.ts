@@ -3,7 +3,7 @@ import { Subject, takeUntil } from 'rxjs';
 import { RouterOutlet } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { WeatherServiceService } from './services/weather-service.service';
 import { WeatherModal } from './modal/weather-modal';
 import { MatButtonModule } from '@angular/material/button';
@@ -26,7 +26,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 export class AppComponent implements OnInit, OnDestroy {
 
-  public myForm: FormGroup;
+  public weatherForm = new FormGroup({
+    zipCode: new FormControl('', [Validators.required]),
+  });
   public weather?: WeatherModal;
   public showData: boolean = false;
   public isLoading: boolean = false;
@@ -36,10 +38,10 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private _weatherApi: WeatherServiceService
-  ) {
-    this.myForm = this.fb.group({
-      name: [''],
-    });
+  ) {}
+
+    get zipCodeForm() {
+    return this.weatherForm.get('zipCode');
   }
 
   public ngOnInit(): void {}
@@ -52,7 +54,7 @@ export class AppComponent implements OnInit, OnDestroy {
   public submitForm(): void {
     this.isLoading = true;
     this._weatherApi
-      .getWeather(this.myForm.value.name)
+      .getWeather(this.weatherForm.value.zipCode!)
       .pipe(takeUntil(this.destroy$))
       .subscribe((res: WeatherModal) => {
         this.isLoading = false;
@@ -60,5 +62,4 @@ export class AppComponent implements OnInit, OnDestroy {
         this.weather = res;
       });
   }
-
 }
