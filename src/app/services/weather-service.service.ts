@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { WeatherModal } from '../modal/weather-modal';
 
@@ -12,7 +11,7 @@ export class WeatherServiceService {
 
   public getWeather(city: string): Observable<WeatherModal> {
     return this._httpClient.get<WeatherModal>(
-      `http://api.weatherapi.com/v1/current.json?key=${environment.apiKey}&q=${city}&aqi=yes`
+      `https://weather-app-backend-peach.vercel.app/api/weather?q=${city}`
     );
   }
 }

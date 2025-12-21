@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "build:ghpages": "ng build --configuration production --output-path docs --base-href /weather-app/"
+    "deploy:ghpages": "ng build --configuration production --output-path docs --base-href /weather-app/ && cp -R docs/browser/* docs/ && touch docs/.nojekyll"
   },
   "private": true,
   "dependencies": {

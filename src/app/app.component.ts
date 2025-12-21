@@ -3,7 +3,13 @@ import { Subject, takeUntil } from 'rxjs';
 import { RouterOutlet } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { WeatherServiceService } from './services/weather-service.service';
 import { WeatherModal } from './modal/weather-modal';
 import { MatButtonModule } from '@angular/material/button';
@@ -23,9 +29,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-
 export class AppComponent implements OnInit, OnDestroy {
-
   public weatherForm = new FormGroup({
     zipCode: new FormControl('', [Validators.required]),
   });
@@ -35,12 +39,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private destroy$ = new Subject<void>();
 
-  constructor(
-    private fb: FormBuilder,
-    private _weatherApi: WeatherServiceService
-  ) {}
+  constructor(private _weatherApi: WeatherServiceService) {}
 
-    get zipCodeForm() {
+  get zipCodeForm() {
     return this.weatherForm.get('zipCode');
   }
 
